@@ -7,11 +7,12 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
 //{params.id} {/*here we have used id because the folder name is id , now whatever we write in the url parameter will be shown at the route page, that is being rendered here*/}
-const page = ({params}) => {
+const Page = ({params}) => {
 
   const [data , setData] = useState(null);
 
   const fetchBlogData = async()=>{
+    
     // for(let i=0; i<blog_data.length; i++){ //initially we were using the id of the data present in our assets folder but now we are getting the data from the database
     //     if(Number(params.id) === blog_data[i].id){//so if we provide the id to the backend it wil  find the blog related to the id and display it on this page
     //         setData(blog_data[i]);
@@ -72,4 +73,4 @@ const page = ({params}) => {
   )
 }
 
-export default page
+export default Page
