@@ -1,6 +1,6 @@
 <h1 align="center"><b> Blogger </b></h1> 
 
-Link - <a href="h"> Availabe soon</a>
+Link - <a href=" sudo delete web service blogger">BLogger</a>
 <br>
 <p align="center">
 <img src="./public/Saved Pictures/Screenshot 2024-09-19 112433.png" width="700" title="Blogs Website">
