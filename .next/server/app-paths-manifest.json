@@ -1,4 +1,12 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
+  "/api/blog/route": "app/api/blog/route.js",
+  "/api/email/route": "app/api/email/route.js",
+  "/blogs/[id]/page": "app/blogs/[id]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/admin/AddProduct/page": "app/admin/AddProduct/page.js",
+  "/admin/BlogList/page": "app/admin/BlogList/page.js",
+  "/admin/Subscriptions/page": "app/admin/Subscriptions/page.js",
+  "/admin/page": "app/admin/page.js"
 }
