@@ -18,11 +18,17 @@ Link - <a href="h"> Availabe soon</a>
 General Features:
 -Create Blogs
 <img src="./public/Saved Pictures/Screenshot 2024-09-19 112616.png" width="700" title="Blogs Website">
+
 -Upload Pictures
+
 <img src="./public/Saved Pictures/Screenshot 2024-09-19 112537.png" width="700" title="Blogs Website">
+
 -Read Blogs
+
 -Subscribe 
+
 -Delete BLogs
+
 <img src="./public/Saved Pictures/Screenshot 2024-09-19 112658.png" width="700" title="Blogs Website">
 
 
