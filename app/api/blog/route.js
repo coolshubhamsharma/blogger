@@ -1,10 +1,11 @@
 
 import { ConnectDB } from '@/lib/config/db';
 import Blog from '@/lib/models/Blogmodel';
-import { mkdir, writeFile } from 'fs/promises';
+// import { mkdir, writeFile } from 'fs/promises';
 import { NextResponse } from 'next/server';
 import path from 'path';
-import fs from 'fs'
+// import fs from 'fs'
+import cloudinary from '@/lib/config/cloudinary';
 
 
 //api-end point to get all blogs
@@ -33,17 +34,17 @@ export async function GET(request){
 
 //Api end-point for uploading blogs
 
-const uploadDirectory = path.join(process.cwd(), 'public');
+// const uploadDirectory = path.join(process.cwd(), 'public');
 //this function makes sure that the directory exists
-async function ensureDirectoryExistence(filePath) {
-    const dir = path.dirname(filePath);
-    try {
-        await mkdir(dir, { recursive: true });
-    } catch (error) {
-        console.error('Error creating directory:', error);
-        throw new Error('Error creating directory');
-    }
-}
+// async function ensureDirectoryExistence(filePath) {
+//     const dir = path.dirname(filePath);
+//     try {
+//         await mkdir(dir, { recursive: true });
+//     } catch (error) {
+//         console.error('Error creating directory:', error);
+//         throw new Error('Error creating directory');
+//     }
+// }
 
 export async function POST(request){
     const formData = await request.formData(); //we will store our form data that we get from our post request
@@ -51,17 +52,21 @@ export async function POST(request){
 
     const image = formData.get('image');
     const imageByteData = await image.arrayBuffer();
-    const buffer = Buffer.from(imageByteData);
+    const buffer = Buffer.from(imageByteData).toString('base64');
     
     // Define file path
-    const filePath = path.join(uploadDirectory, timeStamp.toString(), image.name);
-    await ensureDirectoryExistence(filePath);
+    // const filePath = path.join(uploadDirectory, timeStamp.toString(), image.name);
+    // await ensureDirectoryExistence(filePath);
 
     // Write file to disk
-    await writeFile(filePath, buffer);
+    // await writeFile(filePath, buffer);
 
-    const imgUrl = `/${timeStamp}/${image.name}` ;
-    console.log(imgUrl);
+    const imgUrl = `data:${image.type};base64,${buffer}` ;
+    // console.log(imgUrl);
+
+    const UploadResult = await cloudinary.uploader.upload(imgUrl,{
+        folder:'blogs' ,
+    });
     
 
     const blogData = {
@@ -69,7 +74,7 @@ export async function POST(request){
             description:`${formData.get('description')}`,
             category:`${formData.get('category')}`,
             author:`${formData.get('author')}`,
-            image:`${imgUrl}`,
+            image:`${UploadResult.secure_url}`,//url of the uploaded image
             authorImg:`${formData.get('authorImg')}`
     }
 
